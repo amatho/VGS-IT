@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>IT Lekser</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+      line-height: 1.5;
+      background-color: #212121;
+      color: #fafafa;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 1.5rem;
+    }
+
+    .container input {
+      border: none;
+      background: none;
+      padding: 10px 15px;
+      margin: 10px;
+      border-bottom: 1px solid #eeeeee;
+      color: #fafafa;
+      font-size: 1rem;
+    }
+
+    .container input:focus {
+      outline: 0;
+      border-bottom: 2px solid #2196f3;
+    }
+
+    .container button {
+      border: none;
+      border-radius: 50%;
+      background: none;
+      background-color: #fafafa;
+      padding: 15px;
+      transition: color 100ms, background 200ms;
+      cursor: pointer;
+    }
+
+    .container button:focus {
+      outline: 0;
+    }
+
+    .container button:active {
+      background-color: #e0e0e0;
+    }
+
+    .container button:hover {
+      color: transparent;
+      background: url('images/ic_arrow_forward_white_24px.svg') 0 0 no-repeat;
+      background-size: cover;
+    }
+
+    @media screen and (max-width: 480px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    Skriv inn uken leksen er til:
+    <input id="week" type="number" name="week" min="1" max="52">
+    <button id="go">Gå</button>
+  </div>
+
+  <script>
+    document.getElementById('go').addEventListener('click', function(evt) {
+      var week = document.getElementById('week');
+      if (week.value) {
+        if (window.location.href.slice(-1) === '/') {
+          window.location = window.location.href + 'uke' + week.value + '/';
+        } else {
+          window.location = window.location.href + '/uke' + week.value + '/';
+        }
+      }
+    });
+
+    document.getElementById('week').addEventListener('input', function(evt) {
+      if (evt.target.value && evt.target.value > 52) {
+        evt.target.value = 52;
+      } else if (evt.target.value && evt.target.value < 1) {
+        evt.target.value = 1;
+      }
+    });
+  </script>
+</body>
+</html>
