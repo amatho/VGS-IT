@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lekse Uke 36</title>
+</head>
+<body>
+  Bruker ikke document.write(...), men noe lignende.
+  <div class="content"></div>
+
+  <script>
+    function h(tag, props, children) {
+      var el = document.createElement(tag);
+
+      props && Object.keys(props).forEach(function(prop) {
+        el[prop] = props[prop];
+      });
+
+      if (children && Array.isArray(children)) {
+        children.forEach(function(child) {
+          if (typeof child === 'string') {
+            el.appendChild(document.createTextNode(child));
+          } else {
+            el.appendChild(child);
+          }
+        });
+      } else if (children && (typeof children === 'string' || typeof children === 'number')) {
+        el.textContent = children;
+      } else {
+        try {
+          el.appendChild(children);
+        } catch(err) {
+          throw new Error(err);
+        }
+      }
+
+      return el;
+    }
+
+    function render(el, parent) {
+      parent.appendChild(el);
+    }
+
+    var content = document.querySelector('.content');
+
+    var renderToContent = function(el) {
+      render(el, content);
+    };
+
+    var tekstVariabel = 'Et variabel med datatypen tekst.'
+
+    var changed = false;
+    var tekst1 = 'Dette er tekst 1. Trykk på knappen for å bytte.';
+    var tekst2 = 'Dette er tekst 2. Du har klart å trykke på en knapp.'
+
+    var fornavn = 'Ola';
+    var etternavn = 'Nordmann';
+
+    var Side52 = h('div', null, [
+      h('h1', null, 'Oppgaver side 52'),
+      h('p', null, tekstVariabel),
+      h('button', {
+        onclick: function(evt) {
+          if (changed) {
+            evt.target.textContent = tekst1;
+            changed = !changed;
+          } else {
+            evt.target.textContent = tekst2;
+            changed = !changed;
+          }
+        }
+      }, tekst1),
+      h('p', null, fornavn + ' ' + etternavn),
+      h('button', {
+        onclick: function(evt) {
+          evt.target.textContent = 'Velkommen, ' + prompt('Skriv inn et navn:');
+        }
+      }, 'Trykk på meg for å velge navn'),
+      h('p', {
+        onclick: function(evt) {
+          var name = prompt('Skriv inn et navn:');
+          evt.target.textContent = `Hei på deg, kjære ${name}. Du, ${name}, har nå fått en innbydelse til en superduper klassefest. Ditt navn er ${name}, og jeg liker å skrive navnet ditt, ${name}, mange ganger for å vise hvor nyttige variabler er. Så, ${name}, håper du kommer på klassefesten. Ha det bra, ${name}. Om du, ${name}, ikke kan komme hadde det vært greit om du ga beskjed.`;
+        }
+      }, 'Trykk på denne teksten for å lage innbydelsen.')
+    ]);
+
+    var height = 3;
+    var width = 7;
+    var r = 0;
+
+    function getRandomIntInclusive(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    var Side60 = h('div', null, [
+      h('h1', null, 'Oppgaver side 60'),
+      h('p', null, `Arealet er ${height*width}. Omkretsen er ${2*(height+width)}.`), // Regner ut areal og omrets
+      h('p', null, `Tilfeldig mellom 1 og 6: ${getRandomIntInclusive(1, 6)}. Mellom 0 og 10: ${getRandomIntInclusive(0, 10)}. Mellom 10 og 20: ${getRandomIntInclusive(10, 20)}.`),
+      h('p', null, [
+        h('button', {
+          onclick: function(evt) {
+            var radius = Number(prompt('Skriv inn radiusen:'));
+
+            result = h('div', null, [
+              h('p', null, 'Selected radius: ' + radius),
+              h('p', null, 'Omkrets: ' + (2 * Math.PI * radius)), // Omkrets
+              h('p', null, 'Volum: ' + ((4 * Math.PI * Math.pow(radius, 3)) / 3)), // Volum
+              h('p', null, 'Areal av overflate: ' + (4 * Math.PI * Math.pow(radius, 2))) // Areal
+            ]);
+            render(result, evt.target.parentElement);
+          }
+        }, 'Velg radius')
+      ]),
+      h('p', null, [
+        h('button', {
+          onclick: function(evt) {
+            var poeng = Number(prompt('Skriv inn antall poeng på besvarelsen:'));
+            var mulige = Number(prompt('Skriv inn antall mulige poeng:'));
+
+            var result = h('div', null, [
+              h('span', null, 'Karakter: '),
+              h('b', null, Math.round(((poeng / mulige) * 6)))
+            ]);
+            render(result, evt.target.parentElement);
+          }
+        }, 'Regn ut karakter')
+      ]),
+      h('p', null, [
+        h('button', {
+          onclick: function(evt) {
+            var vekt = Number(prompt('Skriv inn vekten din:'));
+            var hoyde = Number(prompt('Skriv inn høyden din:'));
+
+            var result = h('div', null, 'Din KMI: ' + (vekt / Math.pow(hoyde, 2)));
+            render(result, evt.target.parentElement);
+          }
+        }, 'Regn ut din KMI')
+      ])
+    ]);
+
+    var App = h('div', null, [
+      Side52,
+      Side60
+    ]);
+
+    renderToContent(App);
+  </script>
+</body>
+</html>
