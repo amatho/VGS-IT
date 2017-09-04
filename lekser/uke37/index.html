@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="200" height="100"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    function getRoundRandFunc(max, min) {
+      if (min) {
+        return function() {
+          return Math.round((Math.random() * (max - min)) + min);
+        }
+      } else {
+        return function() {
+          return Math.round(Math.random() * max);
+        };
+      }
+    }
+
+    var getRandX = getRoundRandFunc(width);
+    var getRandY = getRoundRandFunc(height);
+    var getRandRadius = getRoundRandFunc(width / 2, width / 5);
+    var getRandDeg = getRoundRandFunc(360);
+
+    function animateCircle(startX, startY) {
+      var currentX = startX;
+      var currentY = startY;
+      var currentRadius = getRandRadius();
+
+      ctx.fillStyle = 'hsla(' + getRandDeg() + ', 100%, 50%, 0.7)';
+      ctx.beginPath();
+      ctx.arc(currentX, currentY, currentRadius, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.closePath();
+
+      var targetX = getRandX();
+      var targetY = getRandY();
+      var targetRadius = getRandRadius();
+
+      console.log('Targets:', targetX, targetY, 'Radius:', targetRadius);
+
+      window.setInterval(function() {
+        ctx.clearRect(0, 0, width, height);
+
+        if ((targetX - currentX) > 0) {
+          currentX += 1;
+        } else if ((targetX - currentX) < 0) {
+          currentX -= 1;
+        }
+
+        if ((targetY - currentY) > 0) {
+          currentY += 1;
+        } else if ((targetY - currentY) < 0) {
+          currentY -= 1;
+        }
+
+        if ((targetRadius - currentRadius) > 0) {
+          currentRadius += 1;
+        } else if ((targetY - currentY) < 0) {
+          currentRadius -= 1;
+        }
+
+        if (currentX === targetX && currentY === targetY && currentRadius === targetRadius) {
+          targetX = getRandX();
+          targetY = getRandY();
+          targetRadius = getRandRadius();
+          console.log('New targets:', targetX, targetY, targetRadius);
+        }
+
+        ctx.beginPath();
+        ctx.arc(currentX, currentY, currentRadius, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+      }, 1);
+    }
+
+    animateCircle(getRandX(), getRandY());
+  </script>
+</body>
+</html>
