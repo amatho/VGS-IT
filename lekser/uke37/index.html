@@ -38,62 +38,74 @@
 
     var getRandX = getRoundRandFunc(width);
     var getRandY = getRoundRandFunc(height);
-    var getRandRadius = getRoundRandFunc(width / 2, width / 5);
+    var getRandRadius = getRoundRandFunc(width / 3, width / 6);
     var getRandDeg = getRoundRandFunc(360);
 
-    function animateCircle(startX, startY) {
-      var currentX = startX;
-      var currentY = startY;
-      var currentRadius = getRandRadius();
+    function animateCircle(startX, startY, circles = 1) {
+      var circleData = {};
 
-      ctx.fillStyle = 'hsla(' + getRandDeg() + ', 100%, 50%, 0.7)';
-      ctx.beginPath();
-      ctx.arc(currentX, currentY, currentRadius, 0, 2 * Math.PI);
-      ctx.fill();
-      ctx.closePath();
+      for (var i = 0; i < circles; i++) {
+        circleData[i] = {};
 
-      var targetX = getRandX();
-      var targetY = getRandY();
-      var targetRadius = getRandRadius();
+        circleData[i].currentX = startX;
+        circleData[i].currentY = startY;
+        circleData[i].currentRadius = getRandRadius();
+        circleData[i].color = 'hsla(' + getRandDeg() + ', 100%, 50%, 0.7)';
 
-      console.log('Targets:', targetX, targetY, 'Radius:', targetRadius);
+        ctx.fillStyle = circleData[i].color;
+        ctx.beginPath();
+        ctx.arc(circleData[i].currentX, circleData[i].currentY, circleData[i].currentRadius, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+
+        circleData[i].targetX = getRandX();
+        circleData[i].targetY = getRandY();
+        circleData[i].targetRadius = getRandRadius();
+
+        console.log(i, 'Targets:', circleData[i].targetX, circleData[i].targetY, 'Radius:', circleData[i].targetRadius);
+      }
 
       window.setInterval(function() {
         ctx.clearRect(0, 0, width, height);
 
-        if ((targetX - currentX) > 0) {
-          currentX += 1;
-        } else if ((targetX - currentX) < 0) {
-          currentX -= 1;
-        }
+        for (i = 0; i < circles; i++) {
+          ctx.fillStyle = circleData[i].color;
 
-        if ((targetY - currentY) > 0) {
-          currentY += 1;
-        } else if ((targetY - currentY) < 0) {
-          currentY -= 1;
-        }
+          if ((circleData[i].targetX - circleData[i].currentX) > 0) {
+            circleData[i].currentX += 1;
+          } else if ((circleData[i].targetX - circleData[i].currentX) < 0) {
+            circleData[i].currentX -= 1;
+          }
 
-        if ((targetRadius - currentRadius) > 0) {
-          currentRadius += 1;
-        } else if ((targetY - currentY) < 0) {
-          currentRadius -= 1;
-        }
+          if ((circleData[i].targetY - circleData[i].currentY) > 0) {
+            circleData[i].currentY += 1;
+          } else if ((circleData[i].targetY - circleData[i].currentY) < 0) {
+            circleData[i].currentY -= 1;
+          }
 
-        if (currentX === targetX && currentY === targetY && currentRadius === targetRadius) {
-          targetX = getRandX();
-          targetY = getRandY();
-          targetRadius = getRandRadius();
-          console.log('New targets:', targetX, targetY, targetRadius);
-        }
+          if ((circleData[i].targetRadius - circleData[i].currentRadius) > 0) {
+            circleData[i].currentRadius += 1;
+          } else if ((circleData[i].targetRadius - circleData[i].currentRadius) < 0) {
+            circleData[i].currentRadius -= 1;
+          }
 
-        ctx.beginPath();
-        ctx.arc(currentX, currentY, currentRadius, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.closePath();
-      }, 1);
+          if (circleData[i].currentX === circleData[i].targetX && circleData[i].currentY === circleData[i].targetY && circleData[i].currentRadius === circleData[i].targetRadius) {
+            circleData[i].targetX = getRandX();
+            circleData[i].targetY = getRandY();
+            circleData[i].targetRadius = getRandRadius();
+            console.log(i, 'New targets:', circleData[i].targetX, circleData[i].targetY, circleData[i].targetRadius);
+            circleData[i].color = 'hsla(' + getRandDeg() + ', 100%, 50%, 0.7)';
+          }
+
+          ctx.beginPath();
+          ctx.arc(circleData[i].currentX, circleData[i].currentY, circleData[i].currentRadius, 0, 2 * Math.PI);
+          ctx.fill();
+          ctx.closePath();
+        }
+      }, 10);
     }
 
-    animateCircle(getRandX(), getRandY());
+    animateCircle(getRandX(), getRandY(), 3);
   </script>
 </body>
 </html>
