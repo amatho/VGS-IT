@@ -4,46 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Lekse Uke 38</title>
+  <title>Lekse Uke 38 - Oppgave 2</title>
   <style>
     body {
       margin: 0;
       box-sizing: border-box;
       line-height: 1.5;
       font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       min-height: 100vh;
       background-color: #212121;
       color: #fafafa;
     }
-    .nav {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      width: 100%;
-    }
     .nav-link {
-      color: #bdbdbd;
+      position: fixed;
+      color: #fafafa;
       text-transform: uppercase;
       text-decoration: none;
       font-size: 1.5rem;
-      margin: 0 15px;
+      margin: 10px;
+      opacity: 0.7;
+      transition: opacity 200ms;
     }
     .nav-link:hover {
-      color: #fafafa;
+      opacity: 1;
+    }
+    .back {
+      top: 0;
+      left: 0;
+    }
+    .reload {
+      top: 0;
+      right: 0;
     }
   </style>
 </head>
 <body>
-  <p>Velg oppgave</p>
-  <div class="nav">
-    <a href="opg1.html" class="nav-link">Prøv selv s. 59</a>
-    <a href="opg2.html" class="nav-link">Prøv selv s. 83</a>
-    <a href="opg3/" class="nav-link">Lag noe morsomt</a>
-  </div>
+  <a href="index.html" class="nav-link back">Tilbake</a>
+  <a href="opg1.html" class="nav-link reload">Last inn på nytt</a>
+  <div class="content"></div>
 </body>
 </html>
