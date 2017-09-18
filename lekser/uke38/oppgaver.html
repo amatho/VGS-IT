@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lekse Uke 38 - Oppgave 1</title>
+  <style>
+    body {
+      margin: 0;
+      box-sizing: border-box;
+      line-height: 1.5;
+      font-family: sans-serif;
+      background-color: #212121;
+      color: #fafafa;
+    }
+    .links {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .nav-link {
+      color: #fafafa;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: 1.5rem;
+      margin: 10px;
+      opacity: 0.7;
+      transition: opacity 200ms;
+    }
+    .nav-link:hover {
+      opacity: 1;
+    }
+    #content {
+      margin: 10px 0;
+    }
+    #content h2 {
+      padding: 0 8px;
+    }
+    #content p {
+      background-color: #313131;
+      margin: 0;
+      padding: 16px;
+    }
+    #content p:nth-child(odd) {
+      background-color: #414141;
+    }
+    img {
+      height: 100px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="links">
+    <a href="index.html" class="nav-link back">Tilbake</a>
+    <a href="opg1.html" class="nav-link reload">Last inn på nytt</a>
+  </div>
+  <div id="content"></div>
+
+  <script src="util.js"></script>
+  <script>
+    var content = document.getElementById('content');
+    var renderToContent = function(el) {
+      render(el, content);
+    }
+
+    var side79 = h('div', null, [
+      h('h2', null, 'Side 79'),
+      h('p', {
+        onclick: function(evt) {
+          if (prompt('Skriv hei').toString().toLowerCase() === 'hei') {
+            evt.target.textContent = 'hei';
+          } else {
+            evt.target.textContent = 'ikke hei';
+          }
+        }
+      }, 'Trykk på meg for oppgave 1'),
+      h('p', {
+        onclick: function(evt) {
+          if (prompt('Hva heter han-som-ikke-skal-nevnes?').toString()
+            .toLowerCase() === 'voldemort') {
+            evt.target.innerHTML = 'Du svarte riktig!!!1!!!111!<br>' +
+              '<img src="assets/triwizard_cup.png">';
+          } else {
+            evt.target.innerHTML = 'Du svarte feil...<br>' +
+              '<img src="assets/fail.jpg">';
+          }
+        }
+      }, 'Trykk på meg for oppgave 2'),
+      h('p', {
+        onclick: function(evt) {
+          var tall = '4';
+          evt.target.textContent = 'tall === 4; Dette er ' + (tall === 4);
+        }
+      }, 'Trykk på meg for oppgave 3'),
+      h('p', {
+        onclick: function(evt) {
+          evt.target.innerHTML = '';
+          var weekDay = prompt('Skriv inn en ukedag:').toString().toLowerCase()
+            .trim();
+          var date = Number(prompt('Skriv inn en dato:'));
+
+          if (weekDay === 'fredag' && date === 13) {
+            evt.target.innerHTML = 'Åh neiiii, det er fredag den 13.!!!11! ' +
+              'Pass på!!<br><img src="assets/fail.jpg">';
+          } else {
+            evt.target.innerHTML = 'Ok du er trygg, ha en god dag videre :)' +
+              '<br><img src="assets/thumbsup.jpg">'
+          }
+        }
+      }, 'Trykk på meg for oppgave 4')
+    ]);
+
+    var side83 = h('div', null, [
+      h('h2', null, 'Side 83'),
+      h('p', {
+        onclick: function(evt) {
+          evt.target.innerHTML = 'Du får denne fuglen:<br>' +
+            '<img src="assets/fugl' + (Math.round(Math.random() * 2)) + '.jpg">'
+        }
+      }, 'Trykk på meg for oppgave 1'),
+      h('p', {
+        onclick: function(evt) {
+          var dice = 6 - Math.floor(Math.random() * 6);
+          evt.target.innerHTML = 'Du fikk ' + dice + '!<br>' +
+            '<img src="assets/Terning' + dice + '.jpg">'
+        }
+      }, 'Trykk på meg for oppgave 2'),
+      h('p', {
+        onclick: function(evt) {
+          if (true) {
+            if (false !== true) {
+              evt.target.innerHTML = 'True er sann og false =/= true er også sann';
+            }
+          }
+        }
+      }, 'Trykk på meg for oppgave 3'),
+      h('p', {
+        onclick: function(evt) {
+          evt.target.innerHTML = '';
+          var weekDay = prompt('Skriv inn en ukedag:').toString().toLowerCase()
+            .trim();
+          var date = Number(prompt('Skriv inn en dato:'));
+
+          if (weekDay === 'fredag' && date === 13) {
+            evt.target.innerHTML = 'Åh neiiii, det er fredag den 13.!!!11! ' +
+              'Pass på!!<br><img src="assets/fail.jpg">';
+          } else if (['fredag', 'lørdag', 'søndag'].indexOf(weekDay) !== -1) {
+            evt.target.innerHTML = 'Endelig helg!! :)' +
+              '<br><img src="assets/thumbsup.jpg">'
+          } else {
+            evt.target.innerHTML = 'Ok du er trygg, ha en god dag videre :)' +
+              '<br><img src="assets/thumbsup.jpg">'
+          }
+        }
+      }, 'Trykk på meg for oppgave 4'),
+      h('p', {
+        onclick: function(evt) {
+          evt.target.textContent = 'Kælkis!';
+
+          var num1 = Number(prompt('Skriv inn et tall:'));
+          var num2 = Number(prompt('Skriv inn et tall:'));
+          var operator = prompt('Skriv en regneoperasjon (*, /, -, +):');
+
+          switch (operator) {
+            case '+':
+              evt.target.textContent += ' Resultat: ' + (num1 + num2);
+              break;
+            case '-':
+              evt.target.textContent += ' Resultat: ' + (num1 - num2);
+              break;
+            case '*':
+              evt.target.textContent += ' Resultat: ' + (num1 * num2);
+              break;
+            case '/':
+              evt.target.textContent += ' Resultat: ' + (num1 / num2);
+              break;
+            default:
+
+          }
+        }
+      }, 'Trykk på meg for oppgave 5')
+    ]);
+
+    renderToContent(side79);
+    renderToContent(side83);
+  </script>
+</body>
+</html>

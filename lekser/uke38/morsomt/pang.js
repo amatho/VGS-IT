@@ -67,7 +67,6 @@ function main() {
       drawTarget(ctx, targetX, targetY, targetRadius);
       drawCrosshair(ctx, evt.clientX, evt.clientY, '#00ff00');
     }
-
   });
 
   window.addEventListener('keydown', function(evt) {
