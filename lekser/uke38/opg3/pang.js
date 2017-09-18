@@ -29,6 +29,8 @@ function main() {
   var getRandY = generateRandIntFunc(targetRadius, height - targetRadius);
   var targetX = getRandX();
   var targetY = getRandY();
+  var lastMouseX = 0;
+  var lastMouseY = 0;
 
   // Draw target and show points initially (if not, the user won't see them
   // before moving the mouse)
@@ -36,6 +38,9 @@ function main() {
   showPoints(pointSpan, points);
 
   window.addEventListener('mousemove', function(evt) {
+    lastMouseX = evt.clientX;
+    lastMouseY = evt.clientY;
+
     ctx.clearRect(0, 0, width, height); // Clear the whole canvas
 
     drawTarget(ctx, targetX, targetY, targetRadius);
@@ -45,9 +50,11 @@ function main() {
   window.addEventListener('click', function(evt) {
     shoot.load();
     shoot.play();
+    shootEffect(flash);
 
     // Check if the user hit the target
-    if (mouseInRect(evt.clientX, evt.clientY, targetX - targetRadius, targetY - targetRadius, targetRadius * 2, targetRadius * 2)) {
+    if (mouseInRect(evt.clientX, evt.clientY, targetX - targetRadius,
+      targetY - targetRadius, targetRadius * 2, targetRadius * 2)) {
       hit.load();
       hit.play();
 
@@ -61,24 +68,30 @@ function main() {
       drawCrosshair(ctx, evt.clientX, evt.clientY, '#00ff00');
     }
 
-    /**
-     * The flash effect. Set opacity to 1, and wait for next animation frame
-     * to apply transition (so the transition only is in effect when setting
-     * opacity back to 0). Remove the styles after a timeout of 200ms (the
-     * transition duration) so the effect works the next time
-     */
-    flash.style.opacity = 1;
-    requestAnimationFrame(function() {
-      flash.style.transition = 'opacity 200ms';
-      flash.style.opacity = 0;
+  });
 
-      setTimeout(function() {
-        requestAnimationFrame(function() {
-          flash.style.opacity = null;
-          flash.style.transition = null;
-        });
-      }, 200);
-    });
+  window.addEventListener('keydown', function(evt) {
+    if (evt.keyCode === 32) {
+      shoot.load();
+      shoot.play();
+      shootEffect(flash);
+
+      // Check if the last known X and Y was on the target
+      if (mouseInRect(lastMouseX, lastMouseY, targetX - targetRadius,
+        targetY - targetRadius, targetRadius * 2, targetRadius * 2)) {
+        hit.load();
+        hit.play();
+
+        ctx.clearRect(0, 0, width, height);
+        // Increment points and generate new target
+        points++;
+        targetX = getRandX();
+        targetY = getRandY();
+        showPoints(pointSpan, points);
+        drawTarget(ctx, targetX, targetY, targetRadius);
+        drawCrosshair(ctx, lastMouseX, lastMouseY, '#00ff00');
+      }
+    }
   });
 
   /**
@@ -99,6 +112,27 @@ function main() {
     targetY = getRandY();
 
     drawTarget(ctx, targetX, targetY, targetRadius);
+  });
+}
+
+/**
+ * The shooting effect. Set opacity to 1, and wait for next animation frame
+ * to apply transition (so the transition only is in effect when setting
+ * opacity back to 0). Remove the styles after a timeout of 200ms (the
+ * transition duration) so the effect works the next time
+ */
+function shootEffect(el) {
+  el.style.opacity = 1;
+  requestAnimationFrame(function() {
+    el.style.transition = 'opacity 200ms';
+    el.style.opacity = 0;
+
+    setTimeout(function() {
+      requestAnimationFrame(function() {
+        el.style.opacity = null;
+        el.style.transition = null;
+      });
+    }, 200);
   });
 }
 
