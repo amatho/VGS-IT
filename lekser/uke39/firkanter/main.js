@@ -1,4 +1,5 @@
 const data = {};
+const randDeg = getRandomIntFunc(360);
 
 calculateValues();
 
@@ -8,11 +9,12 @@ for (i = 0; i < data.cubes; i++) {
   const length = data.randomLength();
   div.style.width = length + 'px';
   div.style.height = length + 'px';
-  div.style.backgroundColor = '#ffffff';
+  div.style.backgroundColor = 'hsl(' + randDeg() + ', 100%, 50%)';
 
   data.intervalId = setInterval(() => {
     requestAnimationFrame(() => {
       div.style.transform = `translate(${data.randomX()}px, ${data.randomY()}px)`
+      div.style.backgroundColor = 'hsl(' + randDeg() + ', 100%, 50%)';
     });
   }, data.duration);
 }
