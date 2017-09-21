@@ -29,17 +29,26 @@
     .nav-link:hover {
       opacity: 1;
     }
+    #recalculate {
+      left: auto;
+      right: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
     div {
       position: absolute;
       top: 0;
       left: 0;
       display: inline-block;
-      transition: transform 1s, background-color 1s;
+      transition: transform 2s ease-out, background-color 150ms linear;
+      will-change: transform;
     }
   </style>
 </head>
 <body>
   <a href="../" class="nav-link">Tilbake</a>
+  <button class="nav-link" id="recalculate">Recalculate</button>
 
   <script src="main.js" defer></script>
 </body>
