@@ -7,9 +7,10 @@ makeCubes();
 document.getElementById('recalculate').addEventListener('click', evt => {
   calculateValues();
   document.querySelectorAll('div').forEach(div => {
-    div.parentElement.removeChild(div);
+    const length = data.randomLength();
+    div.style.width = length + 'px';
+    div.style.height = length + 'px';
   });
-  makeCubes();
 });
 
 function makeCubes() {
