@@ -52,7 +52,14 @@ function main() {
     shoot.play();
     shootEffect(flash);
 
+    var centerRadius = targetRadius / 3;
+    var centerX = targetX - centerRadius;
+    var centerY = targetY - centerRadius;
+
     // Check if the user hit the target
+    if (mouseInRect(evt.clientX, evt.clientY, centerX, centerY, centerRadius * 2, centerRadius * 2)) {
+      points++;
+    }
     if (mouseInRect(evt.clientX, evt.clientY, targetX - targetRadius,
       targetY - targetRadius, targetRadius * 2, targetRadius * 2)) {
       hit.load();
@@ -76,6 +83,14 @@ function main() {
       shootEffect(flash);
 
       // Check if the last known X and Y was on the target
+      var centerRadius = targetRadius / 3;
+      var centerX = targetX - centerRadius;
+      var centerY = targetY - centerRadius;
+
+      // Check if the user hit the target
+      if (mouseInRect(lastMouseX, lastMouseY, centerX, centerY, centerRadius * 2, centerRadius * 2)) {
+        points++;
+      }
       if (mouseInRect(lastMouseX, lastMouseY, targetX - targetRadius,
         targetY - targetRadius, targetRadius * 2, targetRadius * 2)) {
         hit.load();
