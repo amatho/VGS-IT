@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pang</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #212121;
+      color: #fafafa;
+      font-family: sans-serif;
+      font-size: 1.5rem;
+      line-height: 1.5;
+      overflow: hidden;
+      cursor: none;
+    }
+    .back-link {
+      position: fixed;
+      top: 0;
+      left: 0;
+      margin: 10px;
+      color: #fafafa;
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 200ms;
+    }
+    .back-link:hover {
+      opacity: 1;
+    }
+    #flash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.3);
+      opacity: 0;
+    }
+    .points-container {
+      position: fixed;
+      top: 0;
+      right: 0;
+      margin: 10px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="200" height="100"></canvas>
+  <div id="flash"></div>
+  <div class="points-container">
+    <span id="points">0</span> points
+  </div>
+  <a href="../" class="back-link">Back</a>
+
+  <script src="pang.js" defer></script>
+</body>
+</html>
