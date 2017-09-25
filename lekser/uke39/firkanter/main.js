@@ -1,5 +1,6 @@
 const data = {};
 const randDeg = getRandomIntFunc(360);
+const randTurn = getRandomIntFunc(1, 4);
 
 calculateValues();
 makeCubes();
@@ -24,7 +25,7 @@ function makeCubes() {
 
     data.intervalId = setInterval(() => {
       requestAnimationFrame(() => {
-        div.style.transform = `translate(${data.randomX()}px, ${data.randomY()}px)`
+        div.style.transform = `translate(${data.randomX()}px, ${data.randomY()}px) rotate(${randTurn()}turn)`;
         div.style.backgroundColor = 'hsl(' + randDeg() + ', 100%, 50%)';
       });
     }, data.duration);
@@ -35,7 +36,7 @@ function calculateValues() {
   const minLength = Math.round(innerWidth / 50);
   const maxLength = Math.round(innerWidth / 40);
 
-  data.cubes = 10;
+  data.cubes = 50;
   data.duration = 2000;
   data.randomLength = getRandomIntFunc(minLength, maxLength);
   data.randomX = getRandomIntFunc(maxLength, innerWidth - maxLength);

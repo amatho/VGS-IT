@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lekse Uke 39 - Oppgaver</title>
+  <style>
+    body {
+      margin: 0;
+      box-sizing: border-box;
+      line-height: 1.5;
+      font-family: sans-serif;
+      background-color: #212121;
+      color: #fafafa;
+    }
+    .links {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .nav-link {
+      color: #fafafa;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: 1.5rem;
+      margin: 10px;
+      opacity: 0.7;
+      transition: opacity 200ms;
+    }
+    .nav-link:hover {
+      opacity: 1;
+    }
+    #content {
+      margin: 10px 0;
+    }
+    #content h2 {
+      padding: 0 8px;
+    }
+    #content p {
+      background-color: #313131;
+      margin: 0;
+      padding: 16px;
+    }
+    #content p:nth-child(odd) {
+      background-color: #414141;
+    }
+    img {
+      height: 100px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="links">
+    <a href="index.html" class="nav-link back">Tilbake</a>
+    <a href="oppgaver.html" class="nav-link reload">Last inn på nytt</a>
+  </div>
+  <div id="content"></div>
+
+  <script src="util.js"></script>
+  <script>
+    const content = document.getElementById('content');
+    const renderToContent = function(el) {
+      render(el, content);
+    }
+
+    const side87 = h('div', null, [
+      h('h2', null, 'Side 87'),
+      h('p', {
+        onclick: evt => {
+          let mobil = prompt('Skriv inn mobilmerket ditt:').toLowerCase();
+          let setColor = (color, blackText) => {
+            evt.target.style.backgroundColor = color;
+
+            if (blackText) {
+              evt.target.style.color = '#212121';
+            } else {
+              evt.target.style.color = '#fafafa';
+            }
+          };
+
+          evt.target.style.backgroundColor = '';
+          evt.target.style.color = '';
+
+
+          switch (mobil) {
+            case 'google':
+              evt.target.textContent = 'Kult, mobilmerket ditt er Google';
+              setColor('rgb(62, 130, 247)');
+              break;
+            case 'samsung':
+              evt.target.textContent = 'Kult, mobilmerket ditt er Samsung';
+              setColor('rgb(17, 34, 163)');
+              break;
+            case 'apple':
+              evt.target.textContent = 'Kult, mobilmerket ditt er Apple';
+              setColor('#ffffff', true);
+              break;
+            case 'microsoft':
+              evt.target.textContent = 'Kult, mobilmerket ditt er Microsoft';
+              setColor('rgb(243, 80, 90)');
+              break;
+            case 'sony':
+              evt.target.textContent = 'Kult, mobilmerket ditt er Sony';
+              setColor('#000000');
+              break;
+            default:
+              evt.target.textContent = 'Sorry, vet ikke hvilken mobil det er.';
+          }
+        }
+      }, 'Trykk på meg for oppgave 1 og 2'),
+      h('p', {
+        onclick: evt => {
+          let rovdyr = prompt('Skriv inn ulv, jerv, bjørn eller gaupe:').toLowerCase();
+
+          switch (rovdyr) {
+            case 'ulv':
+              evt.target.textContent = 'Antall ulv i Norge ligger på 33.';
+              break;
+            case 'jerv':
+              evt.target.textContent = 'Antall jerv i Norge ligger på 343.';
+              break;
+            case 'bjørn':
+              evt.target.textContent = 'Antall bjørner i Norge ligger på 137.';
+              break;
+            case 'gaupe':
+              evt.target.textContent = 'Antall gauper i Norge ligger på 350.';
+              break;
+            default:
+              evt.target.textContent = 'Du skrev inn noe jeg ikke skjønte.';
+          }
+        }
+      }, 'Trykk på meg for oppgave 3'),
+      h('p', {
+        onclick: evt => {
+          let gruppe = prompt('Vise billettprisen for barn, pensjonist, ungdom eller voksne:').toLowerCase();
+
+          switch (gruppe) {
+            case 'barn':
+            case 'pensjonist':
+              evt.target.textContent = 'Pisen er 20 kr.';
+              break;
+            case 'ungdom':
+              evt.target.textContent = 'Prisen er 25 kr.'
+              break;
+            case 'voksne':
+              evt.target.textContent = 'Prisen er 30 kr.'
+              break;
+            default:
+
+          }
+        }
+      }, 'Trykk på meg for oppgave 4')
+    ]);
+
+    const side90 = h('div', null, [
+      h('h2', null, 'Side 90'),
+      h('p', {
+        onclick: evt => {
+          evt.target.innerHTML = '';
+          let vinner = Math.floor(Math.random() * 10 + 1);
+
+          while (vinner !== 10) {
+            evt.target.innerHTML += 'Du vant ikke!<br>';
+            vinner = Math.floor(Math.random() * 10 + 1);
+          }
+          evt.target.innerHTML += 'Endelig vant du!';
+        }
+      }, 'Trykk på meg for oppgave 1'),
+      h('p', {
+        onclick: evt => {
+          evt.target.innerHTML = '<canvas id="canvas" width="100" height="100"></canvas>';
+          let index = 0;
+          const ctx = document.getElementById('canvas').getContext('2d');
+          ctx.fillStyle = 'white';
+
+          while (index < 100) {
+            ctx.fillRect(0, index, 100, 1);
+            index++;
+          }
+        }
+      }, 'Trykk på meg for oppgave 2'),
+      h('p', {
+        onclick: evt => {
+          let terningSum = 0;
+
+          while (terningSum < 50) {
+            terningSum += Math.floor(Math.random() * 6 + 1);
+            evt.target.textContent = `Terningsummen er nå ${terningSum}.`;
+          }
+
+          let i = 0;
+          while (i <= 30) {
+            evt.target.innerHTML += `<br>i er nå ${i}.`;
+            i += 2;
+          }
+        }
+      }, 'Trykk på meg for oppgave 3'),
+      h('p', {
+        onclick: evt => {
+          evt.target.innerHTML = '8 gangen i den lille gangetabellen:<br>';
+          let index = 1;
+          while (index <= 10) {
+            evt.target.innerHTML += `8 * ${index} = ${8 * index}<br>`;
+            index++;
+          }
+        }
+      }, 'Trykk på meg for oppgave 4'),
+    ]);
+
+    renderToContent(side87);
+    renderToContent(side90);
+  </script>
+</body>
+</html>
