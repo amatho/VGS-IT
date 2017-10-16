@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: #212121;
+  background-color: #efefef;
+}
+
+h1, p {
+  text-align: center;
+}
+
+.images {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px 0;
+  margin: 10px;
+  border-radius: 2px;
+  background-color: #ffffff;
+}
+
+.images.active {
+  height: 100vh;
+}
+
+.images .image {
+  width: 10%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.images .image img {
+  width: 100%;
+}
+
+.images.active .image {
+  position: absolute;
+  top: -32px;
+  width: 80%;
+  z-index: 2;
+}
+
+.image.hidden {
+  opacity: 0;
+}
+
+button.next, button.prev {
+  position: absolute;
+  border: 0;
+  padding: 8px 16px;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background: none;
+  background-color: #212121;
+  color: #ffffff;
+  z-index: 2;
+  opacity: 0;
+  cursor: pointer;
+}
+
+button.next.active, button.prev.active {
+  opacity: 1;
+}
+
+button.next {
+  top: 0;
+  right: 0;
+  margin: 96px 16px 0 0;
+}
+
+button.prev {
+  top: 0;
+  left: 0;
+  margin: 96px 0 0 16px;
+}
+
+.shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms;
+}
+
+.shadow.active {
+  opacity: 0.3;
+  z-index: 1;
+  pointer-events: all;
+}
