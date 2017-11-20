@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Contact List</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="contact-container">
+    <input id="search-input" type="search" placeholder="Search...">
+    <table class="contact-list">
+      <thead>
+        <tr>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Tel. Number</td>
+          <td>Email</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody id="contacts"></tbody>
+    </table>
+  </div>
+
+  <form id="contact-form" class="hidden">
+    <label>
+      First Name
+      <input type="text" name="firstName" required>
+    </label>
+    <label>
+      Last Name
+      <input type="text" name="lastName" required>
+    </label>
+    <label>
+      Tel. Number
+      <input type="tel" name="tel" required>
+    </label>
+    <label>
+      Email
+      <input type="email" name="email" required>
+    </label>
+
+    <button type="submit">Add</button>
+    <button id="close-contact" type="button">Close</button>
+  </form>
+
+  <div id="shadow" class="hidden"></div>
+
+  <button id="add-contact">+</button>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
