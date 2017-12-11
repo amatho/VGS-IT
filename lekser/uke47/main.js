@@ -103,6 +103,9 @@ function removeContact(index) {
 
 function getStoredContacts() {
   contactArray = JSON.parse(localStorage.getItem('contacts'));
+  if (contactArray === null) {
+    contactArray = [];
+  }
   renderContacts();
 }
 
