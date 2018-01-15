@@ -12,17 +12,11 @@ function convertToRoman(num) {
 
 const convertThousand = thousands => charMultiply("M", thousands);
 
-function convertHundred(hundreds) {
-  return romanTopMiddleConversion(hundreds, "C", "D", "M");
-}
+const convertHundred = hundreds => romanTopMiddleConversion(hundreds, "C", "D", "M");
 
-function convertTen(tens) {
-  return romanTopMiddleConversion(tens, "X", "L", "C");
-}
+const convertTen = tens => romanTopMiddleConversion(tens, "X", "L", "C");
 
-function convertOne(num) {
-  return romanTopMiddleConversion(num, "I", "V", "X");
-}
+const convertOne = (num) => romanTopMiddleConversion(num, "I", "V", "X");
 
 function romanTopMiddleConversion(num, normalChar, middleChar, topChar) {
   if (num === 9) {
@@ -55,6 +49,3 @@ function iterate(item, times, action, acc) {
   }
   return iterate(item, times - 1, action, action(acc, item));
 }
-
-convertToRoman(4532);
-convertToRoman(36);
