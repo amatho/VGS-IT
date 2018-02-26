@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: sans-serif;
+}
+
+h1 {
+  padding: 8px;
+  margin: 16px 0 4px 0;
+  font-size: 1.6rem;
+}
+
+div {
+  font-size: 1.0rem;
+}
+
+input {
+  font-size: 1.0rem;
+}
+
+#task1, #task2, #task3, #task4, #task5, #task6 {
+  margin-bottom: 32px;
+  padding: 0 16px;
+}
+
+#task1 {
+  display: flex;
+  flex-direction: column;
+}
+
+#task1.changed {
+  flex-direction: column-reverse;
+}
+
+#task1 button {
+  align-self: center;
+  margin: 10px;
+}
+
+#task2 div {
+  font-size: 1.2rem;
+}
+
+#task4 {
+  display: flex;
+  flex-direction: column;
+}
+
+#task4 > * {
+  align-self: flex-start;
+}
+
+#task4 input, button {
+  margin-bottom: 8px;
+}
+
+#task4 canvas {
+  background-color: #212121;
+}
+
+#task6 {
+  position: relative;
+  height: 400px;
+  margin: 8px 16px 32px 16px;
+  padding: 0;
+  border: 2px solid #212121;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+#task6 .ball {
+  position: absolute;
+  left: 50%;
+  top: 350px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fa1212;
+  transform: translate(-500%, -800%);
+  animation: bouncyball 2s infinite forwards linear;
+}
+
+@keyframes bouncyball {
+  0% {
+    transform: translate(-500%, -800%);
+    border-radius: 50%;
+  }
+  5% {
+    border-radius: 50%;
+  }
+  10% {
+    transform: translate(-475%, 0);
+    border-radius: 40%;
+  }
+  15% {
+    border-radius: 50%;
+  }
+  25% {
+    transform: translate(-437.5%, -450%);
+  }
+  30% {
+    transform: translate(-425%, -500%);
+  }
+  35% {
+    transform: translate(-412.5%, -450%);
+  }
+  45% {
+    border-radius: 50%;
+  }
+  50% {
+    transform: translate(-375%, 0);
+    border-radius: 40%;
+  }
+  55% {
+    border-radius: 50%;
+  }
+  65% {
+    transform: translate(-337.5%, -200%);
+  }
+  70% {
+    transform: translate(-325%, -250%);
+  }
+  75% {
+    transform: translate(-312.5%, -200%);
+  }
+  85% {
+    border-radius: 50%;
+  }
+  90% {
+    transform: translate(-275%, 0);
+    border-radius: 40%;
+  }
+  95% {
+    transform: translate(-262.5%, -50%);
+    border-radius: 50%;
+  }
+  100% {
+    transform: translate(-250%, 0);
+  }
+}
