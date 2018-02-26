@@ -37,6 +37,11 @@ input {
 #task1 button {
   align-self: center;
   margin: 10px;
+  padding: 8px 16px;
+  font-size: 1.4rem;
+  background: #1212f0;
+  color: #fafafa;
+  border-radius: 100px;
 }
 
 #task2 div {
@@ -68,6 +73,8 @@ input {
   border: 2px solid #212121;
   border-radius: 2px;
   overflow: hidden;
+  background: red;
+  animation: rainbow 1s infinite forwards linear;
 }
 
 #task6 .ball {
@@ -79,7 +86,8 @@ input {
   border-radius: 50%;
   background: #fa1212;
   transform: translate(-500%, -800%);
-  animation: bouncyball 2s infinite forwards linear;
+  animation: bouncyball 2s infinite forwards linear,
+    rainbow 1s infinite forwards linear 0.5s;
 }
 
 @keyframes bouncyball {
@@ -137,6 +145,33 @@ input {
     border-radius: 50%;
   }
   100% {
-    transform: translate(-250%, 0);
+    transform: translate(-250%, 100%);
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    background: red;
+  }
+  14% {
+    background: orange;
+  }
+  28% {
+    background: yellow;
+  }
+  42% {
+    background: green;
+  }
+  56% {
+    background: blue;
+  }
+  70% {
+    background: indigo;
+  }
+  84% {
+    background: violet;
+  }
+  100% {
+    background: red;
   }
 }
