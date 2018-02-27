@@ -35,13 +35,38 @@ input {
 }
 
 #task1 button {
+  position: relative;
   align-self: center;
   margin: 10px;
   padding: 8px 16px;
   font-size: 1.4rem;
-  background: #1212f0;
+  background: #4405f7;
   color: #fafafa;
   border-radius: 100px;
+  overflow: hidden;
+  outline: 0;
+}
+
+#task1 button::before {
+  --size: 0;
+
+  content: '';
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle closest-side, #f72359, transparent);
+  transform: translate(-50%, -50%);
+  transition: width .2s ease, height .2s ease;
+}
+
+#task1 button:hover::before {
+  --size: 400px;
+}
+
+#task1 button span {
+  position: relative;
 }
 
 #task2 div {
