@@ -24,6 +24,7 @@ body {
   background-color: #5564e9;
   color: #ffffff;
   font-size: 1.2rem;
+  animation: 2s fancy infinite alternate linear;
 }
 
 #container .item img {
@@ -71,4 +72,13 @@ body {
 .cool-input:hover {
   background: #212121;
   color: #ffffff;
+}
+
+@keyframes fancy {
+  0% {
+    background: #5564e9;
+  }
+  100% {
+    background: #8232eb;
+  }
 }
