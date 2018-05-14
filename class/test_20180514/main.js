@@ -123,7 +123,7 @@ function render() {
   container.innerHTML = "";
   let countriesArray = Array.from(countries);
 
-  countriesArray.sort(([keyA, valA], [keyB, valB]) => valA.get("points") < valB.get("points"));
+  countriesArray.sort(([keyA, valA], [keyB, valB]) => valB.get("points") - valA.get("points"));
 
   for (const [key, value] of countriesArray) {
     container.innerHTML += `
