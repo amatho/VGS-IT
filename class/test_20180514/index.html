@@ -11,25 +11,28 @@
   <div id="container"></div>
 
   <form id="form">
-    <select id="country" required></select>
-    will give
-    <select id="points" required>
-      <option value="">Choose points...</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="10">10</option>
-      <option value="12">12</option>
-    </select>
-    points to
-    <select id="votingFor" required></select>
+    <div id="error"></div>
+    <div class="wrapper">
+      <select id="country" class="cool-input" required></select>
+      will give
+      <select id="points" class="cool-input" required>
+        <option value="">Choose points...</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12">12</option>
+      </select>
+      points to
+      <select id="votingFor" class="cool-input" required></select>
+    </div>
 
-    <button type="submit">Vote!</button>
+    <button type="submit"class="cool-input" >Vote!</button>
   </form>
 
   <script src="main.js" defer></script>

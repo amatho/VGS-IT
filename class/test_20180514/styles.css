@@ -3,23 +3,72 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 62.5%;
 }
 
 #container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
   max-width: 970px;
   width: 80%;
   margin: 0 auto;
+  padding: 20px 0;
 }
 
 #container .item {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  padding: 10px;
   background-color: #5564e9;
   color: #ffffff;
+  font-size: 1.2rem;
+}
+
+#container .item img {
+  height: 1.4rem;
+  margin-right: 8px;
 }
 
 #container .item .name {
   flex: 1;
+  margin-right: 4px;
+}
+
+#form {
+  border-top: 2px solid #e0e0e0;
+  padding: 16px;
+  font-size: 1.2rem;
+}
+
+#form #error {
+  color: #ff2121;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+#form .wrapper {
+  text-align: center;
+}
+
+#form button {
+  display: block;
+  margin: 16px auto;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.cool-input {
+  background: none;
+  color: #212121;
+  border: 2px solid #212121;
+  border-radius: 3px;
+  font-size: 1rem;
+  transition: 200ms background, 200ms color;
+}
+
+.cool-input:hover {
+  background: #212121;
+  color: #ffffff;
 }
