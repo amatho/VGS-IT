@@ -1,0 +1,25 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 970px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#container .item {
+  display: flex;
+  flex-direction: row;
+  background-color: #5564e9;
+  color: #ffffff;
+}
+
+#container .item .name {
+  flex: 1;
+}

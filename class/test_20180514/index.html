@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Eurovision Voting</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="container"></div>
+
+  <form id="form">
+    <select id="country" required></select>
+    will give
+    <select id="points" required>
+      <option value="">Choose points...</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="10">10</option>
+      <option value="12">12</option>
+    </select>
+    points to
+    <select id="votingFor" required></select>
+
+    <button type="submit">Vote!</button>
+  </form>
+
+  <script src="main.js" defer></script>
+</body>
+</html>

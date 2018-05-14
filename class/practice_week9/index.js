@@ -7,13 +7,6 @@ const task6 = document.getElementById("task6");
 
 task1.querySelectorAll("button").forEach(btn => {
   btn.addEventListener("click", () => task1.classList.toggle("changed"));
-  btn.addEventListener("mousemove", evt => {
-    const x = evt.pageX - evt.target.offsetLeft;
-    const y = evt.pageY - evt.target.offsetTop;
-
-    evt.target.style.setProperty("--x", x + "px");
-    evt.target.style.setProperty("--y", y + "px");
-  });
 });
 
 task2.querySelector("input").addEventListener("input", evt => {

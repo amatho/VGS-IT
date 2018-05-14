@@ -42,27 +42,29 @@ input {
   font-size: 1.4rem;
   background: #4405f7;
   color: #fafafa;
+  border: 0;
   border-radius: 100px;
   overflow: hidden;
   outline: 0;
 }
 
 #task1 button::before {
-  --size: 0;
-
   content: '';
   position: absolute;
-  left: var(--x);
-  top: var(--y);
-  width: var(--size);
-  height: var(--size);
-  background: radial-gradient(circle closest-side, #f72359, transparent);
-  transform: translate(-50%, -50%);
-  transition: width .2s ease, height .2s ease;
+  left: 50%;
+  top: 50%;
+  width: 400px;
+  height: 400px;
+  background: #ffffff;
+  opacity: 0.5;
+  border-radius: 50%;
+  transform: scale(0) translate(-50%, -50%);
+  transition: transform 400ms;
+  transform-origin: top left;
 }
 
 #task1 button:hover::before {
-  --size: 400px;
+  transform: scale(1) translate(-50%, -50%);
 }
 
 #task1 button span {
