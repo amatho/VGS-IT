@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 62.5%;
+  background: #e0e0e0;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: #f7f0ea;
+  color: #212121;
+  padding: 0 16px;
+  height: 60px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+header a {
+  color: #212121;
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+header a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+header .title {
+  font-size: 1.4rem;
+}
+
+header > nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 16px;
+  font-size: 1.0rem;
+}
+
+header > nav > a {
+  margin: 0 8px;
+}
+
+main #slideshow {
+  width: 100%;
+  height: calc(100vh - 60px);
+  margin: 60px 0 0 0;
+  background-image: url('../assets/intro1.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: 200ms background-image;
+}
+
+#prevBtn, #nextBtn {
+  position: fixed;
+  top: calc(50% - 24px);
+  background: #f7f0ea;
+  border: 0;
+  margin: 0;
+  padding: 4px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#prevBtn {
+  left: 0;
+  margin-left: 16px;
+}
+
+#nextBtn {
+  right: 0;
+  margin-right: 16px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+footer .icon.hours:hover ~ .info-text.hours {
+  opacity: 1;
+}
+footer .icon.price:hover ~ .info-text.price {
+  opacity: 1;
+}
+footer .icon.information:hover ~ .info-text.information {
+  opacity: 1;
+}
+
+.info-text {
+  position: fixed;
+  bottom: 0;
+  margin: 0 32px 90px 32px;
+  padding: 8px;
+  opacity: 0;
+  font-size: 1.2rem;
+  background: #f7f0ea;
+  border-radius: 3px;
+  transition: 200ms opacity;
+}
+
+.icon {
+  display: inline-block;
+  width: 85px;
+  height: 80px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-color: #f7f0ea;
+  margin: 0 8px;
+  border-radius: 3px;
+}
+
+.icon.hours {
+  background-image: url('../assets/aapningstider.jpg');
+}
+.icon.price {
+  background-image: url('../assets/priser.jpg');
+}
+.icon.information {
+  background-image: url('../assets/informasjon.jpg');
+}

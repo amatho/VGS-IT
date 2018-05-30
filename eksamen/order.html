@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ringve museum &mdash; Bestilling</title>
+  <link rel="stylesheet" href="css/order.css">
+  <link rel="stylesheet" href="material_icons/material.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="title">Ringve museum</a>
+    <nav>
+      <a href="quiz.html">Instrument-quiz</a>
+      <a href="#">Bestilling</a>
+    </nav>
+  </header>
+
+  <div id="events"></div>
+
+  <div id="shadow"></div>
+
+  <div class="modal-container">
+    <form action="" id="form">
+      <h1>Velg antall voksne og barn</h1>
+      <label>
+        Vosksne:
+        <input type="number" min="0" value="0" name="adult" required>
+      </label>
+      <br>
+      <label>
+        Barn:
+        <input type="number" min="0" value="0" name="child" required>
+      </label>
+      <br>
+      <div id="form-error"></div>
+      <button type="submit">Bestill</button>
+    </form>
+  </div>
+
+  <div class="modal-container">
+    <div id="confirmation">
+      <h1>Takk for din bestilling!</h1>
+      <p id="confirmation-content"></p>
+    </div>
+  </div>
+
+  <script src="js/order.js" async></script>
+</body>
+</html>

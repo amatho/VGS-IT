@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ringve museum &mdash; Quiz</title>
+  <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="title">Ringve museum</a>
+    <nav>
+      <a href="quiz.html">Instrument-quiz</a>
+      <a href="#">Bestilling</a>
+    </nav>
+  </header>
+
+  <div class="statusbar">
+    Lyd <span id="soundIndex">1</span> av 5
+  </div>
+
+  <main>
+    <div class="instruments">
+      <div class="instrument">
+        <h1>Fagott</h1>
+        <img onclick="handleAnswer(event, 'fagott')" src="assets/fagott.jpg">
+      </div>
+      <div class="instrument">
+        <h1>Fløyte</h1>
+        <img onclick="handleAnswer(event, 'floyte')" src="assets/floyte.gif">
+      </div>
+      <div class="instrument">
+        <h1>Klarinett</h1>
+        <img onclick="handleAnswer(event, 'klarinett')" src="assets/klarinett.jpg">
+      </div>
+      <div class="instrument">
+        <h1>Obo</h1>
+        <img onclick="handleAnswer(event, 'obo')" src="assets/obo.jpg">
+      </div>
+      <div class="instrument">
+        <h1>Valthorn</h1>
+        <img onclick="handleAnswer(event, 'valthorn')" src="assets/valthorn.jpg">
+      </div>
+    </div>
+
+    <p>Hvilket instrument er dette? Trykk på et bilde for å gjette!</p>
+    <button id="playSound">Spill lyd</button>
+    <button id="restart">Start på nytt</button>
+  </main>
+
+  <div id="congrats">
+    Gratulerer, du har fått ny highscore!
+  </div>
+
+  <div class="stats">
+    <span id="score"></span>
+    Highscore: <span id="highscore">Ingen highscore enda</span>
+  </div>
+
+  <audio id="fagottSound" src="assets/fagott.mp3"></audio>
+  <audio id="floyteSound" src="assets/floyte.mp3"></audio>
+  <audio id="klarinettSound" src="assets/klarinett.mp3"></audio>
+  <audio id="oboSound" src="assets/obo.mp3"></audio>
+  <audio id="valthornSound" src="assets/valthorn.mp3"></audio>
+
+  <audio id="rightSound" src="assets/riktig.mp3"></audio>
+  <audio id="wrongSound" src="assets/feil.mp3"></audio>
+
+  <script src="js/quiz.js" async></script>
+</body>
+</html>
